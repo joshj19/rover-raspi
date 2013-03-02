@@ -5,3 +5,4 @@ while s != "quit":
    input = raw_input('LED~ ')
    print input
    ser.write(input)
+   ser.flushOutput()
