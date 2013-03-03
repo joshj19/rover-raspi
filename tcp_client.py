@@ -45,7 +45,6 @@ def startThreads():
   thread.start_new_thread(socketThread)
   thread.start_new_thread(commandConsumer)
   thread.start_new_thread(dataProducer)
-  #TODO: anything else I want to do on the main thread, like handle ueser input
 
 #The function used by the command queue consumer thread
 def commandConsumer():
@@ -103,3 +102,9 @@ def readData(port):
   #We can serialize it to JSON/BSON here
   pass
 
+#main thread
+if __name__ == '__main__':
+  startSerial()
+  startSocket()
+  startThreads()
+  #main thread exits here
