@@ -44,9 +44,9 @@ def startSocket():
 
 #Starts the producer and consumer threads, socket thread
 def startThreads():
-  thread.start_new_thread(socketThread)
-  thread.start_new_thread(commandConsumer)
-  thread.start_new_thread(dataProducer)
+  thread.start_new_thread(socketThread, ())
+  thread.start_new_thread(commandConsumer, ())
+  thread.start_new_thread(dataProducer, ())
 
 #The function used by the command queue consumer thread
 def commandConsumer():
