@@ -1,3 +1,5 @@
+#FIXME: This doesn't close its connections!!!!
+
 import serial
 import socket
 import queue
@@ -10,8 +12,8 @@ dataSocket = None #Network socket
 
 BAUD = 9600 #USB microcontroller connnection baud rate
 READ_TIMEOUT = 0.1 #0.1 second timeout on read opperations
-HOST = "192.168.0.1" #FIXME: replace with proper address
-PORT = 1919 #FIXME: we need to pick a port to opperate on
+HOST = 'r04jpjwxc.device.mst.edu' #FIXME: replace with proper address
+PORT = 55555 #FIXME: we need to pick a port to opperate on
 SOCKET_BUFF_SIZE = 1024 #FIXME: May need to change this
 SOCKET_TIMEOUT = 0.05 #Timeout for reading data from the socket
 
