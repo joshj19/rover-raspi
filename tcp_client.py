@@ -32,7 +32,7 @@ def startSerial():
   for address in serialPortAddresses:
     newPort = serial.Serial(address, BAUD)
     newPort.timeout = READ_TIMEOUT
-    serialPorts.append()
+    serialPorts.append(newPort)
   print "USB Serial connections initialized"
 
 #Create client socket connection to base station server  
