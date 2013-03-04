@@ -41,6 +41,7 @@ def startSocket():
   dataSocket.connect((HOST, PORT)) #Connect to the base station's server socket
   dataSocket.settimeout(SOCKET_TIMEOUT)
   print "Socket successfully connected to server"
+  print dataSocket
 
 #Starts the producer and consumer threads, socket thread
 def startThreads():
