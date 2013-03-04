@@ -2,7 +2,7 @@
 
 import serial
 import socket
-import queue
+import Queue as queue
 import _thread as thread
 
 serialPortAddresses = ['/dev/ttyACM0'] #all USB device addresses listed here
