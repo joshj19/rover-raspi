@@ -38,7 +38,7 @@ def startSerial():
 #Create client socket connection to base station server  
 def startSocket():
   dataSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-  dataSocket.connect(HOST, PORT) #Connect to the base station's server socket
+  dataSocket.connect((HOST, PORT)) #Connect to the base station's server socket
   dataSocket.settimeout(SOCKET_TIMEOUT)
   print "Socket successfully connected to server"
 
