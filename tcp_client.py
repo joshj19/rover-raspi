@@ -51,7 +51,7 @@ def startThreads():
 #The function used by the command queue consumer thread
 def commandConsumer():
   #TODO
-  while !shutdown:
+  while not shutdown:
     try:
       command = commandQueue.get(block = False) #Pop a command off the queue
     except queue.Empty:
@@ -62,14 +62,14 @@ def commandConsumer():
 #The function used by the data queue producer thread
 def dataProducer():
   #TODO
-  while !shutdown:
+  while not shutdown:
     for port in serialPorts:
       data = readData(port)
       dataQueue.put(data)
 
 #The server socket thread function
 def socketThread():
-  while !shutdown:
+  while not shutdown:
     #read commands from the socket, write it to the queue
     try:
       command = dataSocket.recv(SOCKET_BUFF_SIZE)
