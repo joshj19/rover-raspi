@@ -53,6 +53,8 @@ def startThreads():
 def commandConsumer():
   #TODO
   global commandQueue
+  with safeprint:
+    print commandQueue
   while not shutdown:
     try:
       command = commandQueue.get(block = False) #Pop a command off the queue
