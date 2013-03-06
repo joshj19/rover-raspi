@@ -38,6 +38,7 @@ def startSerial():
 
 #Create client socket connection to base station server  
 def startSocket():
+  global dataSocket
   dataSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   dataSocket.connect((HOST, PORT)) #Connect to the base station's server socket
   dataSocket.settimeout(SOCKET_TIMEOUT)
@@ -53,6 +54,7 @@ def startThreads():
 #The function used by the command queue consumer thread
 def commandConsumer():
   #TODO
+  global commandQueue
   with safeprint:
     print "command queue in consumer thread:"
     print commandQueue
