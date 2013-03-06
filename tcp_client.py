@@ -53,7 +53,8 @@ def startThreads():
 def commandConsumer():
   #TODO
   with safeprint:
-    print "command queue in consumer thread:" + commandQueue
+    print "command queue in consumer thread:"
+    print commandQueue
   while not shutdown:
     try:
       command = commandQueue.get(block = False) #Pop a command off the queue
@@ -113,7 +114,8 @@ def readData(port):
 
 #main thread
 if __name__ == '__main__':
-  print "command queue in main: " + commandQueue
+  print "command queue in main:"
+  print commandQueue
   print dataQueue
   startSerial()
   startSocket()
