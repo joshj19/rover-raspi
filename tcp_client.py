@@ -52,9 +52,8 @@ def startThreads():
 #The function used by the command queue consumer thread
 def commandConsumer():
   #TODO
-  global commandQueue
   with safeprint:
-    print commandQueue
+    print "command queue in consumer thread:" + commandQueue
   while not shutdown:
     try:
       command = commandQueue.get(block = False) #Pop a command off the queue
@@ -114,7 +113,7 @@ def readData(port):
 
 #main thread
 if __name__ == '__main__':
-  print commandQueue
+  print "command queue in main: " + commandQueue
   print dataQueue
   startSerial()
   startSocket()
