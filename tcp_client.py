@@ -2,7 +2,7 @@
 
 import serial
 import socket
-import Queue
+import Queue as queue
 import thread
 
 serialPortAddresses = ['/dev/ttyACM0'] #all USB device addresses listed here
@@ -17,8 +17,8 @@ PORT = 55555 #FIXME: we need to pick a port to opperate on
 SOCKET_BUFF_SIZE = 1024 #FIXME: May need to change this
 SOCKET_TIMEOUT = 0.05 #Timeout for reading data from the socket
 
-commandQueue = Queue.Queue(0)#global, cross-thread data queue for command data
-dataQueue = Queue.Queue(0)#global, cross-thread data queue for sensor data
+commandQueue = queue.Queue(0)#global, cross-thread data queue for command data
+dataQueue = queue.Queue(0)#global, cross-thread data queue for sensor data
 
 safeprint = thread.allocate_lock()
 
