@@ -52,6 +52,7 @@ def startThreads():
 #The function used by the command queue consumer thread
 def commandConsumer():
   #TODO
+  global commandQueue
   while not shutdown:
     try:
       command = commandQueue.get(block = False) #Pop a command off the queue
@@ -63,6 +64,7 @@ def commandConsumer():
 #The function used by the data queue producer thread
 def dataProducer():
   #TODO
+  global dataQueue
   while not shutdown:
     for port in serialPorts:
       data = readData(port)
@@ -70,6 +72,9 @@ def dataProducer():
 
 #The server socket thread function
 def socketThread():
+  global commandQueue
+  global dataSocket
+  global dataQueue
   while not shutdown:
     #read commands from the socket, write it to the queue
     try:
