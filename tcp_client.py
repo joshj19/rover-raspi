@@ -107,6 +107,8 @@ def readData(port):
 
 #main thread
 if __name__ == '__main__':
+  print commandQueue
+  print dataQueue
   startSerial()
   startSocket()
   startThreads()
