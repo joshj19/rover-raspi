@@ -4,6 +4,7 @@ import serial
 import socket
 import Queue
 import thread
+import threading
 import time
 
 serialPortAddresses = ['/dev/ttyACM0'] #all USB device addresses listed here
@@ -47,9 +48,21 @@ def startSocket():
 
 #Starts the producer and consumer threads, socket thread
 def startThreads():
-  thread.start_new_thread(socketThread, ())
-  thread.start_new_thread(commandConsumer, ())
-  #thread.start_new_thread(dataProducer, ())
+  startedThreads = []
+  
+  sThread = threading.Thread(target=socketThread, args=())
+  sThread.start()
+  startedThreads.append(sThread)
+  
+  cThread = threading.Thread(target=commandConsumer, args=())
+  cThread.start()
+  startedThreads.append(cThread)
+  
+  #dThread = threading.Thread(target=dataProducer, args=())
+  #dThread.start()
+  #startedThreads.append(dThread)
+  
+  return startedThreads
 
 #The function used by the command queue consumer thread
 def commandConsumer():
@@ -122,8 +135,10 @@ if __name__ == '__main__':
   print dataQueue
   startSerial()
   startSocket()
-  startThreads()
-  time.sleep(20)#FIXME: This will only allow 20 minutes of executable time before crash; should actually use a join call
+  threads = startThreads()
+  
+  for waitfor in threads: waitfor.join()
+  #time.sleep(20)#FIXME: This will only allow 20 minutes of executable time before crash; should actually use a join call
   #main thread exits here
   with safeprint:
     print "Exiting main thread..."
