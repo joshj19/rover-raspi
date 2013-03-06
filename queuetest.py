@@ -4,7 +4,7 @@ numconsumers = 2                  # how many consumers to start
 numproducers = 4                  # how many producers to start
 nummessages  = 4                  # messages per producer to put
 
-import _thread as thread, queue, time
+import thread, queue, time
 safeprint = thread.allocate_lock()    # else prints may overlap
 dataQueue = queue.Queue()             # shared global, infinite size
 
