@@ -123,3 +123,5 @@ if __name__ == '__main__':
   startThreads()
   time.sleep(20)#FIXME: This will only allow 20 minutes of executable time before crash; should actually use a join call
   #main thread exits here
+  with safeprint:
+    print "Exiting main thread..."
