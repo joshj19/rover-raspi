@@ -1,5 +1,4 @@
 #FIXME: This doesn't close its connections!!!!
-#Showing how to use git
 
 import serial
 import socket
