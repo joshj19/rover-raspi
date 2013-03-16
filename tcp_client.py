@@ -34,6 +34,8 @@ def startSerial():
   for address in serialPortAddresses:
     newPort = serial.Serial(address, BAUD)
     newPort.timeout = READ_TIMEOUT
+    newPort.open()
+    newPort.flush()
     serialPorts.append(newPort)
   print "USB Serial connections initialized"
 
@@ -120,6 +122,8 @@ def handleCommand(command):
   #TODO
   with safeprint:
     print(command)
+  serialPorts[0].write(command + "\n")
+  serialPorts[0].flush()
   
 #The function which reads data from a serial port
 def readData(port):
