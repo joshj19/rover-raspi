@@ -125,6 +125,7 @@ def handleCommand(command):
     #print(command)
   #serialPorts[0].write(command + "\n")
   #serialPorts[0].flush()
+  pass
   
 #The function which reads data from a serial port
 def readData(port):
