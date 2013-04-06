@@ -167,7 +167,7 @@ def parseLaunchpad1(data):
     dataQueue.put(json.dumps(dataArray))
     
 
-def log(string)
+def log(string):
   with safeprint:
     print string
     
