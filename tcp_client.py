@@ -158,7 +158,7 @@ def parseLaunchpad1(data):
   global dataQueue
   allTempData = data.split(',')
   for tempData in allTempData:
-    sensorTempMapping = tempData.split(:)#returns array with id and temperature reading
+    sensorTempMapping = tempData.split(':')#returns array with id and temperature reading
     id = int(sensorTempMapping[0])
     temperature = float(sensorTempMapping[1])
     #Example:
