@@ -6,6 +6,7 @@ import Queue
 import thread
 import threading
 import time
+import json
 
 serialPortAddresses = ['/dev/ttyACM0'] #all USB device addresses listed here
 serialPorts = [] #all serial connections
@@ -120,18 +121,55 @@ def socketThread():
 #The function which handles commands
 def handleCommand(command):
   #TODO
-  with safeprint:
-    print(command)
-  serialPorts[0].write(command + "\n")
-  serialPorts[0].flush()
+  #with safeprint:
+    #print(command)
+  #serialPorts[0].write(command + "\n")
+  #serialPorts[0].flush()
   
 #The function which reads data from a serial port
 def readData(port):
   #TODO
   #Handle the data. The microcontroller will probably be sending raw ASCII data at this point
   #We can serialize it to JSON/BSON here
-  pass
+  newLine = port.readline()
+  id = int(newLine[0:2])#get the launchpad id
+  newLine = newLine[3, len(newLine)]#strip out the id and delimeter
+  if id == 1:
+    parseLaunchpad1(newLine)
+  elif id == 2:
+    parseLaunchpad2(newLine)
+  elif id == 3:
+    parseLaunchpad3(newLine)
+  elif id == 4:
+    parseLaunchpad4(newLine)
+  elif id == 5:
+    parseLaunchpad5(newLine)
+  elif id == 6:
+    parseLaunchpad6(newLine)
+  elif id == 7:
+    parseLaunchpad7(newLine)
+  else:
+    log('Microcontroller id error. ID: ' + id + ' Data: ' + newLine)
+    
 
+#Parse data from launchpad #1
+def parseLaunchpad1(data):
+  global dataQueue
+  allTempData = data.split(',')
+  for tempData in allTempData:
+    sensorTempMapping = tempData.split(:)#returns array with id and temperature reading
+    id = int(sensorTempMapping[0])
+    temperature = float(sensorTempMapping[1])
+    #Example:
+    #{"type":"temp", "source_id": 1, "temp": 72.5, "units": "F"}
+    dataArray = {'type': 'temp', 'source_id': id, 'temp': temperature}
+    dataQueue.put(json.dumps(dataArray))
+    
+
+def log(string)
+  with safeprint:
+    print string
+    
 #main thread
 if __name__ == '__main__':
   print "command queue in main:"
