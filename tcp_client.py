@@ -62,9 +62,9 @@ def startThreads():
   cThread.start()
   startedThreads.append(cThread)
   
-  #dThread = threading.Thread(target=dataProducer, args=())
-  #dThread.start()
-  #startedThreads.append(dThread)
+  dThread = threading.Thread(target=dataProducer, args=())
+  dThread.start()
+  startedThreads.append(dThread)
   
   return startedThreads
 
