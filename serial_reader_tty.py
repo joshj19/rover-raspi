@@ -4,5 +4,5 @@ ser.open()
 ser.flush()
 s = "on"
 while True:
-   input = ser.read(1024)
+   input = ser.readline()
    print input
