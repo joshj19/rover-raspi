@@ -36,6 +36,7 @@ def startSerial():
     newPort = serial.Serial(address, BAUD)
     newPort.timeout = READ_TIMEOUT
     newPort.open()
+    newPort.write('1')#the microcontroller waits to receive this before its starts writing
     newPort.flush()
     serialPorts.append(newPort)
   print "USB Serial connections initialized"
