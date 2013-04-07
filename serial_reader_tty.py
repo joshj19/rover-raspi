@@ -4,5 +4,5 @@ ser.open()
 ser.flush()
 s = "on"
 while True:
-   input = serial.readline()
+   input = serial.read(1024)
    print input
