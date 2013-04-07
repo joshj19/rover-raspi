@@ -137,7 +137,7 @@ def readData(port):
   #We can serialize it to JSON/BSON here
   newLine = port.readline()
   id = int(newLine[0:2])#get the launchpad id
-  newLine = newLine[3, len(newLine)]#strip out the id and delimeter
+  newLine = newLine[3:]#strip out the id and delimeter
   if id == 1:
     parseLaunchpad1(newLine)
   elif id == 2:
