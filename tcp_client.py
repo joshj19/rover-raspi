@@ -115,6 +115,8 @@ def socketThread():
       #write sensor data to the socket
       try:
         dataSocket.sendall(data)
+        with safeprint:
+          print 'Sent: ' + data
       except socket.error:
         pass
         #TODO: print error to console
