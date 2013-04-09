@@ -8,7 +8,7 @@ import threading
 import time
 import json
 
-serialPortAddresses = ['/dev/ttyACM0'] #all USB device addresses listed here
+serialPortAddresses = ['/dev/ttyACM0', '/dev/ttcACM1'] #all USB device addresses listed here
 serialPorts = [] #all serial connections
 
 dataSocket = None #Network socket
