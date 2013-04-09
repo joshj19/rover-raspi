@@ -174,6 +174,40 @@ def parseLaunchpad1(data):
     dataQueue.put(json.dumps(dataArray))
     
 
+#Parse data from launchpad #2
+#DEBUG THIS
+def parseLaunchpad2(data):
+  global dataQueue
+  allTempData = data.split(',')
+  for tempData in allTempData:
+    sensorTempMapping = tempData.split(':')#returns array with id and temperature reading
+    id = int(sensorTempMapping[0])
+    temperature = float(sensorTempMapping[1])
+    #Example:
+    #{"type":"temp", "source_id": 1, "temp": 72.5, "units": "F"}
+    dataArray = {'type': 'temp', 'source_id': id, 'temp': temperature}
+    dataQueue.put(json.dumps(dataArray))
+    
+#TODO
+def parseLaunchpad3(data):
+  pass
+  
+#TODO
+def parseLaunchpad4(data):
+  pass
+  
+#TODO
+def parseLaunchpad5(data):
+  pass
+
+#TODO
+def parseLaunchpad6(data):
+  pass
+
+#TODO
+def parseLaunchpad7(data):
+  pass
+
 def log(string):
   with safeprint:
     print string
