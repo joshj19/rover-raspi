@@ -16,8 +16,9 @@ dataSocket = None #Network socket
 BAUD = 9600 #USB microcontroller connnection baud rate
 READ_TIMEOUT = 0.1 #0.1 second timeout on read opperations
 #HOST = 'r04jpjwxc.device.mst.edu' #FIXME: replace with proper address
-HOST = r03tjm6f4.device.mst.edu
-PORT = 55555 #FIXME: we need to pick a port to opperate on
+HOST = 'r03tjm6f4.device.mst.edu'
+#PORT = 55555 #FIXME: we need to pick a port to opperate on
+PORT = 30000
 SOCKET_BUFF_SIZE = 1024 #FIXME: May need to change this
 SOCKET_TIMEOUT = 0.05 #Timeout for reading data from the socket
 
