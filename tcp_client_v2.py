@@ -57,6 +57,7 @@ def startSerial():
       newPort.open()
       newPort.write('1')#the microcontroller waits to receive this before its starts writing
       newPort.flush()
+      log("Successfully opened serial connection")
       
       identifier = newPort.readline(eol='\n')
       if(identifier == "launchpad_1"):
