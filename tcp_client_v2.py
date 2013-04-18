@@ -81,8 +81,9 @@ def startSerial():
         log("Unidentified device connected on \"" + address + "\"")
       
       serialPorts.append(newPort)
-    except Exception:
+    except Exception as e:
       log("Connection on \"" + address + "\" failed")
+      log(e)
 
 #  =================================================
 #  Deprecated motor controller initialization code      
