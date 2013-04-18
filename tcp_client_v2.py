@@ -59,7 +59,7 @@ def startSerial():
       newPort.flush()
       log("Successfully opened serial connection")
       
-      identifier = newPort.readline()
+      identifier = newPort.readline()[0:11]
       if(identifier == "launchpad_1"):
         launchpad1 = newPort
         log("Launchpad 1 connected")
