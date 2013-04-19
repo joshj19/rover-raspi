@@ -196,6 +196,7 @@ def handleCommand(command):
   try:
     jsonData = json.loads(command)
     type = jsonData['type']
+    log(type)
     if type == 'drive_motor':
       handleDriveMotorCommand(jsonData)#TODO
     elif type == 'box_drop':
