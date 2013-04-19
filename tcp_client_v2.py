@@ -335,8 +335,8 @@ def handleDriveMotorCommand(command):
       pass#TODO
     elif action == 'move_absolute':
       pass#TODO
-  except:
-    log('Failed to handle motor drive command. Command: ' + command)
+  except Exception as e:
+    log('Failed to handle motor drive command. Error: ' + e)
 
 #Formats an integer to always utilize four string characters
 def motorNumFormat(value):
