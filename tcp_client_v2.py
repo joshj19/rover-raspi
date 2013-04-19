@@ -338,6 +338,7 @@ def handleDriveMotorCommand(command):
   except Exception as e:
     log('Failed to handle motor drive command. Error: ')
     log(e)
+    log(sys.exc_traceback.tb_lineno)
 
 #Formats an integer to always utilize four string characters
 def motorNumFormat(value):
