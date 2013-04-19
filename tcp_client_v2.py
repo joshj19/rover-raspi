@@ -167,7 +167,7 @@ def socketThread():
     else:
       commands = command.split('\n')
       for singleCommand in commands:
-        commandQueue.put(command)
+        commandQueue.put(singleCommand.strip('\n'))
         log("Put this in command queue: " + singleCommand)
     
     #read data from the queue write it to the socket
@@ -207,7 +207,7 @@ def handleCommand(command):
     else:
       log('Command type error. Command: ' + command)
   except Exception as e:
-    log("JSON parse error")
+    log("Failed to parse JSON: " + command)
     log(e)
   
 #The function which reads data from a serial port
