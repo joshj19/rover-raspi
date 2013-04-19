@@ -324,6 +324,7 @@ def handleDriveMotorCommand(command):
           launchpad4.flush()
         else:
           log("Unable to handle motor command, controller 4 not initialized.")
+          log(len(serialPorts))
       elif motorID == 3 or motorID == 4:
         if launchpad5 is not None:
           launchpad5.write(commandString)
