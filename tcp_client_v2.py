@@ -205,7 +205,7 @@ def handleCommand(command):
     else:
       log('Command type error. Command: ' + command)
   except Exception:
-    pass
+    log("JSON parse error")
   
 #The function which reads data from a serial port
 def readData(port):
@@ -314,6 +314,7 @@ def handleDriveMotorCommand(command):
       
       if motorID == 1 or motorID == 2:
         if launchpad4 is not None:
+          log("Writing to lanuchpad4: " + commandString)
           launchpad4.write(commandString)
           launchpad4.flush()
         else:
