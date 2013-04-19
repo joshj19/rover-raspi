@@ -312,11 +312,11 @@ def handleDriveMotorCommand(command):
     log("Hi from drive motor function!")
     
     commandString = 'M:0' + str(int(motorID)) + ','#DEBUG
-    
+    log("315")#!!!!!!!!!!!!!!
     if action == 'slew_axis':
       speed = command['speed']
       commandString += 'SL:' + str(motorNumFormat(speed))
-      
+      log("319")#!!!!!!!!!!!!!!!!!!!!!!!
       if motorID == 1 or motorID == 2:
         if launchpad4 is not None:
           log("Writing to lanuchpad4: " + commandString)
@@ -338,7 +338,6 @@ def handleDriveMotorCommand(command):
   except Exception as e:
     log('Failed to handle motor drive command. Error: ')
     log(e)
-    log(sys.exc_traceback.tb_lineno)
 
 #Formats an integer to always utilize four string characters
 def motorNumFormat(value):
