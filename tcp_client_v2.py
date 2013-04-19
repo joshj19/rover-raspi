@@ -165,8 +165,10 @@ def socketThread():
     except socket.timeout:
       pass
     else:
-      commandQueue.put(command)
-      log(command)
+      commands = command.split(',')
+      for singleCommand in commands:
+        commandQueue.put(command)
+        log("Put this in command queue: " + command)
     
     #read data from the queue write it to the socket
     try:
