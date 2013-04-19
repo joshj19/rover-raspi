@@ -311,11 +311,11 @@ def handleDriveMotorCommand(command):
     motorID = command['id']#id of the motor
     log("Hi from drive motor function!")
     
-    commandString = 'M:0' + int(motorID) + ','#DEBUG
+    commandString = 'M:0' + str(int(motorID)) + ','#DEBUG
     
     if action == 'slew_axis':
       speed = command['speed']
-      commandString += 'SL:' + motorNumFormat(speed)
+      commandString += 'SL:' + str(motorNumFormat(speed))
       
       if motorID == 1 or motorID == 2:
         if launchpad4 is not None:
