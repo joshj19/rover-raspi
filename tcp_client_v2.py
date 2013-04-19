@@ -168,7 +168,7 @@ def socketThread():
       commands = command.split('\n')
       for singleCommand in commands:
         commandQueue.put(command)
-        log("Put this in command queue: " + command)
+        log("Put this in command queue: " + singleCommand)
     
     #read data from the queue write it to the socket
     try:
@@ -206,8 +206,9 @@ def handleCommand(command):
       handleSampleBayCommand(jsonData)#TODO
     else:
       log('Command type error. Command: ' + command)
-  except Exception:
+  except Exception as e:
     log("JSON parse error")
+    log(e)
   
 #The function which reads data from a serial port
 def readData(port):
