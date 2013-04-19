@@ -343,13 +343,13 @@ def handleDriveMotorCommand(command):
 def motorNumFormat(value):
   string = ''
   if value < 10:
-    string += '000' + int(value)
+    string += '000' + str(int(value))
   elif value < 100:
-    string += '00' + int(value)
+    string += '00' + str(int(value))
   elif value < 1000:
-    string += '0' + int(value)
+    string += '0' + str(int(value))
   else:
-    string += int(value)
+    string += str(int(value))
   return string
     
 #TODO
