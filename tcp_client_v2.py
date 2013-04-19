@@ -166,6 +166,7 @@ def socketThread():
       pass
     else:
       commandQueue.put(command)
+      log(command)
     
     #read data from the queue write it to the socket
     try:
@@ -263,20 +264,32 @@ def parseLaunchpad2(data):
     dataArray = {'type': 'temp', 'source_id': id, 'temp': temperature}
     dataQueue.put(json.dumps(dataArray))
     
-#TODO
+#FIXME: this will need to be changed to add the altitude sensor
 def parseLaunchpad3(data):
-  pass
+  global dataQueue
+  allBatteryData = data.split(',')
+  for batteryData in allBatteryData:
+    batteryDataMapping = batteryData.split(':')
+    id = int(batteryDataMapping[0])
+    charge = float(batteryDataMapping[1])
+    #Example:
+    #{"type":"battery", "source_id": 1, "charge_percent":, 80.5}
+    dataArray = {'type': 'battery', 'source_id': id, 'charge': charge}
+    dataQueue.put(json.dumps(dataArray))
   
 #TODO
 def parseLaunchpad4(data):
+  #front motor controls; no data to read in
   pass
   
 #TODO
 def parseLaunchpad5(data):
+  #rear motor controls; no data to read in
   pass
 
 #TODO
 def parseLaunchpad6(data):
+  #auxillary controls; no data to read in
   pass
 
 #TODO
@@ -301,13 +314,13 @@ def handleDriveMotorCommand(command):
       
       if motorID == 1 or motorID == 2:
         if launchpad4 is not None:
-          launchpad4.write(commandString)
+          launchpad4.write(commandString + "\n")
           launchpad4.flush()
         else:
           log("Unable to handle motor command, controller 4 not initialized.")
       elif motorID == 3 or motorID == 4:
         if launchpad5 is not None:
-          launchpad5.write(commandString)
+          launchpad5.write(commandString + "\n")
           launchpad5.flush()
         else:
           log("Unable to handle motor command, controller 5 not initialized.")
