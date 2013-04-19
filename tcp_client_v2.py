@@ -49,6 +49,12 @@ shutdown = False
 
 #Create USB connections to microcontrollers
 def startSerial():
+  global launchpad1
+  global launchpad2
+  global launchpad3
+  global launchpad4
+  global launchpad5
+  global launchpad6
   for address in serialPortAddresses:
     log("Attempting connection on \"" + address + "\"")
     try:
@@ -308,6 +314,8 @@ def parseLaunchpad7(data):
 
 #TODO
 def handleDriveMotorCommand(command):
+  global launchpad4
+  global launchpad5
   try:
     #parse data and send to launchpad
     action = command['action']#the type of action the motor should take
