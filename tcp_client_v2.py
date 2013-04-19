@@ -62,12 +62,15 @@ def startSerial():
       identifier = newPort.readline()[0:11]
       if(identifier == "launchpad_1"):
         launchpad1 = newPort
+        serialPorts.append(launchpad1)#TODO: remove this
         log("Launchpad 1 connected")
       elif(identifier == "launchpad_2"):
         launchpad2 = newPort
+        serialPorts.append(launchpad2)#REMOVE
         log("Launchpad 2 connected")
       elif(identifier == "launchpad_3"):
         launchpad3 = newPort
+        serialPorts.append(launchpad3)#REMOVE
         log("Launchpad 3 connected")
       elif(identifier == "launchpad_4"):
         launchpad4 = newPort
@@ -81,7 +84,7 @@ def startSerial():
       else:
         log("Unidentified device connected on \"" + address + "\"")
       
-      serialPorts.append(newPort)
+      #serialPorts.append(newPort)
     except Exception as e:
       log("Connection on \"" + address + "\" failed")
       log(e)
