@@ -314,13 +314,13 @@ def handleDriveMotorCommand(command):
       
       if motorID == 1 or motorID == 2:
         if launchpad4 is not None:
-          launchpad4.write(commandString + "\n")
+          launchpad4.write(commandString)
           launchpad4.flush()
         else:
           log("Unable to handle motor command, controller 4 not initialized.")
       elif motorID == 3 or motorID == 4:
         if launchpad5 is not None:
-          launchpad5.write(commandString + "\n")
+          launchpad5.write(commandString)
           launchpad5.flush()
         else:
           log("Unable to handle motor command, controller 5 not initialized.")
