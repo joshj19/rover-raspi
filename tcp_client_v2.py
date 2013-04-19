@@ -309,6 +309,7 @@ def handleDriveMotorCommand(command):
     #parse data and send to launchpad
     action = command['action']#the type of action the motor should take
     motorID = command['id']#id of the motor
+    log("Hi from drive motor function!")
     
     commandString = 'M:0' + int(motorID) + ','#DEBUG
     
